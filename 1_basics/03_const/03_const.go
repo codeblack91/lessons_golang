@@ -30,7 +30,7 @@ func main() {
 	var month int32 = 13
 	fmt.Println(month + year)
 
-	fmt.Printf("pi: %f", pi)
+	fmt.Printf("pi: %f", pi) //разобать вывод в fmt float и uint64
 	fmt.Println()
 
 	fmt.Printf("const hello: %s, const e: %f", hello, e)
