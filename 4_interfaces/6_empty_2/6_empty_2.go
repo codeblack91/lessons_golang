@@ -31,7 +31,7 @@ type Payer interface {
 func Buy(in interface{}) {
 	var p Payer
 	var ok bool
-	if p, ok = in.(Payer); !ok {
+	if p, ok = in.(Payer); !ok { //in.(Payer) рефлексия???
 		fmt.Printf("%T не является платежным средством\n\n", in)
 		return
 	}

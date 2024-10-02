@@ -64,7 +64,7 @@ func Buy(p Payer) {
 	case *Wallet:
 		fmt.Println("Оплата наличными?")
 	case *Card:
-		plasticCard, ok := p.(*Card)
+		plasticCard, ok := p.(*Card) //после точки скобки
 		if !ok {
 			fmt.Println("Не удалось преобразовать к типу *Card")
 		}
