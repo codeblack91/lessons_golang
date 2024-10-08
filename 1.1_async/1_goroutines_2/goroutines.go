@@ -1,4 +1,4 @@
-/*package main
+package main
 
 import (
 	"fmt"
@@ -37,8 +37,7 @@ func formatWork(in, j int) string {
 		"iter", j, strings.Repeat(" ", j))
 }
 
-*/
-
+/*
 package main
 
 import (
@@ -58,7 +57,7 @@ func printMessage(message string, wg *sync.WaitGroup) {
 
 func main() {
 	var wg sync.WaitGroup // Создаем WaitGroup
-	runtime.GOMAXPROCS(5)
+	runtime.GOMAXPROCS(6)
 	wg.Add(3) // Увеличиваем счетчик на 3, так как будем запускать 3 горутины
 
 	go printMessage("Goroutine 1", &wg)
@@ -68,6 +67,41 @@ func main() {
 	wg.Wait() // Ждем завершения всех горутин
 	fmt.Println("All goroutines finished")
 }
+*/
+
+/*
+package main
+
+import (
+	"fmt"
+	"net/http"
+	"sync"
+)
+
+func handler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello, %s!", r.URL.Path[1:])
+}
+
+func main() {
+	var wg sync.WaitGroup
+
+	// Запуск нескольких горутин для обработки HTTP-запросов
+	for i := 0; i < 5; i++ {
+		wg.Add(1)
+		go func(id int) {
+			defer wg.Done()
+			http.HandleFunc(fmt.Sprintf("/hello%d", id), handler)
+		}(i)
+	}
+
+	go func() {
+		// Запускаем HTTP-сервер
+		http.ListenAndServe(":8080", nil)
+	}()
+
+	wg.Wait() // Ждем завершения всех горутин
+}
+*/
 
 /*
 Теоретические основы горутин
